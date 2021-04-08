@@ -39,16 +39,22 @@ export default class Team {
 
   add(Person) {
     const newPerson = new Person('Misha');
+    for (const value of this.members) {
+      if (value instanceof Person) {
+        throw new Error('Персонаж уже существует!');
+      }
+    }
     this.members.add(newPerson);
     return this.members;
   }
 
   addAll(...persons) {
+    console.log(...persons);
+
     for (const Person of persons) {
       const newPerson = new Person('Misha');
       this.members.add(newPerson);
     }
-
     return this.members;
   }
 
@@ -60,3 +66,8 @@ export default class Team {
     return arrPerson;
   }
 }
+
+const newTeam = new Team();
+//newTeam.add(Magician);
+newTeam.addAll(Bowman, Magician, Swordman);
+console.log(newTeam);

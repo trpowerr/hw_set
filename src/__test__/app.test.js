@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import Team, { Bowman, Magician, Swordman } from '../js/app';
 
 test('check ADD', () => {
@@ -12,11 +13,19 @@ test('check ADD-ALL', () => {
   let received = null;
   const newTeam = new Team();
   newTeam.addAll(Bowman, Magician, Swordman);
-  for (let value of newTeam.toArray()) {
+  for (const value of newTeam.toArray()) {
     if (value instanceof Bowman && Magician && Swordman) {
       received = true;
     }
   }
   const expected = true;
   expect(received).toBe(expected);
+});
+
+test('duplicate class check', () => {
+  expect(() => {
+    const newTeam = new Team();
+    newTeam.add(Bowman);
+    newTeam.add(Bowman);
+  }).toThrow('Персонаж уже существует!');
 });
