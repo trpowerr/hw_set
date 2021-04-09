@@ -29,3 +29,11 @@ test('duplicate class check', () => {
     newTeam.add(Bowman);
   }).toThrow('Персонаж уже существует!');
 });
+
+test('check duplicate addAll', () => {
+  const newTeam = new Team();
+  newTeam.add(Bowman);
+  const received = newTeam.addAll(Bowman, Magician, Swordman);
+  const expected = false;
+  expect(received).toBe(expected);
+});

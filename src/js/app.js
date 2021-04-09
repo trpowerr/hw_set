@@ -49,7 +49,14 @@ export default class Team {
   }
 
   addAll(...persons) {
-    console.log(...persons);
+    for (const Person of persons) {
+      for (const prop of this.members) {
+        if (prop instanceof Person) {
+          console.log('Персонаж уже существует!');
+          return false;
+        }
+      }
+    }
 
     for (const Person of persons) {
       const newPerson = new Person('Misha');
@@ -68,6 +75,6 @@ export default class Team {
 }
 
 const newTeam = new Team();
-//newTeam.add(Magician);
+newTeam.add(Bowman);
 newTeam.addAll(Bowman, Magician, Swordman);
 console.log(newTeam);
