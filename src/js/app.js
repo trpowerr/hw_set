@@ -73,8 +73,3 @@ export default class Team {
     return arrPerson;
   }
 }
-
-const newTeam = new Team();
-newTeam.add(Bowman);
-newTeam.addAll(Bowman, Magician, Swordman);
-console.log(newTeam);
