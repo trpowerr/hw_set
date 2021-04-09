@@ -52,7 +52,6 @@ export default class Team {
     for (const Person of persons) {
       for (const prop of this.members) {
         if (prop instanceof Person) {
-          console.log('Персонаж уже существует!');
           return false;
         }
       }
